@@ -7,7 +7,7 @@ use OpenApi\Attributes as OA;
 
 #[
     OA\Schema(
-        title: $CLASS$,
+        title: "$CLASS$",
         properties: [
             new OA\Property(
                 property: "",
@@ -25,7 +25,7 @@ class $CLASS$ extends FormRequest
      *
      * @return array
      */
-    public function rules(): void
+    public function rules(): array
     {
         return [
             //
