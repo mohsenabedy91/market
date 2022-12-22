@@ -6,16 +6,36 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use OpenApi\Attributes as OA;
+use Symfony\Component\HttpFoundation\Response as ResponseStatus;
 
 class UserController extends Controller
 {
     #[
         OA\Get(
-            path: "",
+            path: "/user",
             summary: "",
             security: [["bearerAuth" => []]],
             tags: [""],
-            responses: [],
+            responses: [
+                new OA\Response(
+                    response: ResponseStatus::HTTP_UNAUTHORIZED,
+                    description: "Unauthorized",
+                    content: new OA\JsonContent(
+                        properties: [
+                            new OA\Property(
+                                property: "status",
+                                type: "boolean",
+                                example: false,
+                            ),
+                            new OA\Property(
+                                property: "message",
+                                type: "string",
+                                example: "You are not authenticated.",
+                            ),
+                        ],
+                    ),
+                ),
+            ],
         )
     ]
     public function index(): Response
@@ -24,12 +44,31 @@ class UserController extends Controller
     }
 
     #[
-        OA\Get(
-            path: "",
+        OA\Post(
+            path: "/user",
             summary: "",
             security: [["bearerAuth" => []]],
             tags: [""],
-            responses: [],
+            responses: [
+                new OA\Response(
+                    response: ResponseStatus::HTTP_UNAUTHORIZED,
+                    description: "Unauthorized",
+                    content: new OA\JsonContent(
+                        properties: [
+                            new OA\Property(
+                                property: "status",
+                                type: "boolean",
+                                example: false,
+                            ),
+                            new OA\Property(
+                                property: "message",
+                                type: "string",
+                                example: "You are not authenticated.",
+                            ),
+                        ],
+                    ),
+                ),
+            ],
         )
     ]
     public function store(Request $request): Response
@@ -39,11 +78,30 @@ class UserController extends Controller
 
     #[
         OA\Get(
-            path: "",
+            path: "/user/{id}",
             summary: "",
             security: [["bearerAuth" => []]],
             tags: [""],
-            responses: [],
+            responses: [
+                new OA\Response(
+                    response: ResponseStatus::HTTP_UNAUTHORIZED,
+                    description: "Unauthorized",
+                    content: new OA\JsonContent(
+                        properties: [
+                            new OA\Property(
+                                property: "status",
+                                type: "boolean",
+                                example: false,
+                            ),
+                            new OA\Property(
+                                property: "message",
+                                type: "string",
+                                example: "You are not authenticated.",
+                            ),
+                        ],
+                    ),
+                ),
+            ],
         )
     ]
     public function show(int $id): Response
@@ -52,12 +110,31 @@ class UserController extends Controller
     }
 
     #[
-        OA\Get(
-            path: "",
+        OA\Put(
+            path: "/user/{id}",
             summary: "",
             security: [["bearerAuth" => []]],
             tags: [""],
-            responses: [],
+            responses: [
+                new OA\Response(
+                    response: ResponseStatus::HTTP_UNAUTHORIZED,
+                    description: "Unauthorized",
+                    content: new OA\JsonContent(
+                        properties: [
+                            new OA\Property(
+                                property: "status",
+                                type: "boolean",
+                                example: false,
+                            ),
+                            new OA\Property(
+                                property: "message",
+                                type: "string",
+                                example: "You are not authenticated.",
+                            ),
+                        ],
+                    ),
+                ),
+            ],
         )
     ]
     public function update(Request $request, int $id): Response
@@ -66,12 +143,31 @@ class UserController extends Controller
     }
 
     #[
-        OA\Get(
-            path: "",
+        OA\Delete(
+            path: "/user/{id}",
             summary: "",
             security: [["bearerAuth" => []]],
             tags: [""],
-            responses: [],
+            responses: [
+                new OA\Response(
+                    response: ResponseStatus::HTTP_UNAUTHORIZED,
+                    description: "Unauthorized",
+                    content: new OA\JsonContent(
+                        properties: [
+                            new OA\Property(
+                                property: "status",
+                                type: "boolean",
+                                example: false,
+                            ),
+                            new OA\Property(
+                                property: "message",
+                                type: "string",
+                                example: "You are not authenticated.",
+                            ),
+                        ],
+                    ),
+                ),
+            ],
         )
     ]
     public function destroy(int $id): Response
