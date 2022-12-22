@@ -1,0 +1,15 @@
+{
+    "name": "User",
+    "alias": "user",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\User\\Providers\\UserServiceProvider"
+    ],
+    "files": [],
+    "title": "",
+    "version": "0.1.0",
+    "compatibility": "",
+    "author": "Mohsen Abedy"
+}
