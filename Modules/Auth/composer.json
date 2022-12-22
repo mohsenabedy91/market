@@ -1,0 +1,23 @@
+{
+    "name": "nwidart/auth",
+    "description": "",
+    "authors": [
+        {
+            "name": "Mohsen Abedy",
+            "email": "mohsen.abedy@yahoo.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Auth\\": ""
+        }
+    }
+}
