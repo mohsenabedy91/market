@@ -80,11 +80,11 @@ services:
         image: 'swaggerapi/swagger-ui'
 #        restart: always
         ports:
-            - '${SWAGGER_PORT:-8080}:8080'
+            - '${SWAGGER_FORWARD_PORT:-8080}:8080'
         networks:
             - sail
         volumes:
-            - "./storage/app/public/docs:/docs"
+            - "./docs:/docs"
         environment:
             SWAGGER_JSON: /docs/openapi.json
 networks:
