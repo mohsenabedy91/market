@@ -17,3 +17,6 @@ yarn-error.log
 /.idea
 /.vscode
 /docs
+/sail-redis
+/sail-mysql
+/sail-pgsql
