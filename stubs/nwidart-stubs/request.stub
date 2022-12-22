@@ -1,0 +1,34 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Foundation\Http\FormRequest;
+use OpenApi\Attributes as OA;
+
+#[
+    OA\Schema(
+        title: $CLASS$,
+        properties: [
+            new OA\Property(
+                property: "",
+                type: "",
+                example: "",
+            ),
+        ],
+        type: "object",
+    )
+]
+class $CLASS$ extends FormRequest
+{
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): void
+    {
+        return [
+            //
+        ];
+    }
+}
