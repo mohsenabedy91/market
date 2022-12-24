@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 
 class Authenticate extends Middleware
 {
@@ -12,11 +14,16 @@ class Authenticate extends Middleware
      *
      * @param Request $request
      * @return string|null
+     * @throws AuthenticationException
      */
-    protected function redirectTo($request)
+    protected function redirectTo($request): ?string
     {
-        if (!$request->expectsJson()) {
+        if (!$request->isJson()) {
             return route('login');
         }
+
+        throw new AuthenticationException(
+            Lang::get("messages.unauthenticated")
+        );
     }
 }
