@@ -13,7 +13,18 @@ use Symfony\Component\HttpFoundation\Response;
         title: "$CLASS$",
         properties: [
             new OA\Property(
-                property: "",
+                property: "data",
+                properties: [
+                    new OA\Property(
+                        property: "",
+                        type: "",
+                    ),
+                ],
+            ),
+            new OA\Property(
+                property: "status",
+                type: "boolean",
+                example: true,
             ),
         ],
         type: "object",
@@ -49,7 +60,7 @@ class $CLASS$ extends JsonResource
     public function with($request): array
     {
         return [
-            'status' => true,
+            "status" => true,
         ];
     }
 }

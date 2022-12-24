@@ -2,6 +2,13 @@
 
 namespace Modules\Auth\Services;
 
+<<<<<<<<< Temporary merge branch 1
+class AuthService
+{
+    public function register(array $parameters = [])
+    {
+        //
+=========
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Modules\Auth\Repositories\V1\AuthRepositoryInterface;
@@ -49,5 +56,6 @@ class AuthService
     private function createToken(User $user): string
     {
         return $user->createToken("Personal Access Token")->accessToken;
+>>>>>>>>> Temporary merge branch 2
     }
 }

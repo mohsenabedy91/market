@@ -4,7 +4,7 @@ namespace $NAMESPACE$;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use $MODULE_NAMESPACE$\$MODULE$\Database\factories\$NAME$Factory;
+use $MODULE_NAMESPACE$\$MODULE$\Database\Factories\$NAME$Factory;
 
 class $CLASS$ extends Model
 {

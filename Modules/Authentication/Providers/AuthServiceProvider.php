@@ -1,20 +1,20 @@
 <?php
 
-namespace $NAMESPACE$;
+namespace Modules\Authentication\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class $CLASS$ extends ServiceProvider
+class AuthServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected string $moduleName = "$MODULE$";
+    protected string $moduleName = "Authentication";
 
     /**
      * @var string $moduleNameLower
      */
-    protected string $moduleNameLower = "$LOWER_NAME$";
+    protected string $moduleNameLower = "auth";
 
     /**
      * Boot the application events.
@@ -25,8 +25,7 @@ class $CLASS$ extends ServiceProvider
     {
         $this->registerTranslations();
         $this->registerConfig();
-        $this->loadMigrationsFrom(module_path($this->moduleName, "$MIGRATIONS_PATH$"));
-        $this->resolveRelationUsing();
+        $this->loadMigrationsFrom(module_path($this->moduleName, "Database/Migrations"));
     }
 
     /**
@@ -37,6 +36,7 @@ class $CLASS$ extends ServiceProvider
     public function register(): void
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->register(RepositoryServiceProvider::class);
     }
 
     /**
@@ -47,10 +47,10 @@ class $CLASS$ extends ServiceProvider
     protected function registerConfig(): void
     {
         $this->publishes([
-            module_path($this->moduleName, "$PATH_CONFIG$/config.php") => config_path($this->moduleNameLower . ".php"),
+            module_path($this->moduleName, "Config/config.php") => config_path($this->moduleNameLower . ".php"),
         ], "config");
         $this->mergeConfigFrom(
-            module_path($this->moduleName, "$PATH_CONFIG$/config.php"), $this->moduleNameLower
+            module_path($this->moduleName, "Config/config.php"), $this->moduleNameLower
         );
     }
 
@@ -67,17 +67,8 @@ class $CLASS$ extends ServiceProvider
             $this->loadTranslationsFrom($langPath, $this->moduleNameLower);
             $this->loadJsonTranslationsFrom($langPath);
         } else {
-            $this->loadTranslationsFrom(module_path($this->moduleName, "$PATH_LANG$"), $this->moduleNameLower);
-            $this->loadJsonTranslationsFrom(module_path($this->moduleName, "$PATH_LANG$"));
+            $this->loadTranslationsFrom(module_path($this->moduleName, "Resources/lang"), $this->moduleNameLower);
+            $this->loadJsonTranslationsFrom(module_path($this->moduleName, "Resources/lang"));
         }
-    }
-
-    /**
-     *
-     * @return void
-     */
-    private function resolveRelationUsing(): void
-    {
-        //
     }
 }
