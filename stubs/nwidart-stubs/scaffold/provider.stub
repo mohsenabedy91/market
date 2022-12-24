@@ -26,6 +26,7 @@ class $CLASS$ extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->loadMigrationsFrom(module_path($this->moduleName, "$MIGRATIONS_PATH$"));
+        $this->resolveRelationUsing();
     }
 
     /**
@@ -69,5 +70,14 @@ class $CLASS$ extends ServiceProvider
             $this->loadTranslationsFrom(module_path($this->moduleName, "$PATH_LANG$"), $this->moduleNameLower);
             $this->loadJsonTranslationsFrom(module_path($this->moduleName, "$PATH_LANG$"));
         }
+    }
+
+    /**
+     *
+     * @return void
+     */
+    private function resolveRelationUsing(): void
+    {
+        //
     }
 }
