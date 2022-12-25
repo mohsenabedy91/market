@@ -1,0 +1,15 @@
+{
+    "name": "Product",
+    "alias": "product",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Product\\Providers\\ProductServiceProvider"
+    ],
+    "files": [],
+    "title": "",
+    "version": "0.1.0",
+    "compatibility": "",
+    "author": "Mohsen Abedy"
+}
