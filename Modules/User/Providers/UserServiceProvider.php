@@ -3,6 +3,8 @@
 namespace Modules\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Seller\Models\Seller;
+use Modules\User\Models\User;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -26,6 +28,7 @@ class UserServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->loadMigrationsFrom(module_path($this->moduleName, "Database/Migrations"));
+        $this->resolveRelationUsing();
     }
 
     /**
@@ -69,5 +72,15 @@ class UserServiceProvider extends ServiceProvider
             $this->loadTranslationsFrom(module_path($this->moduleName, "Resources/lang"), $this->moduleNameLower);
             $this->loadJsonTranslationsFrom(module_path($this->moduleName, "Resources/lang"));
         }
+    }
+
+    /**
+     * @return void
+     */
+    private function resolveRelationUsing(): void
+    {
+        User::resolveRelationUsing("sellers", static function (User $user) {
+            return $user->hasMany(Seller::class, "user_id", "id");
+        });
     }
 }
