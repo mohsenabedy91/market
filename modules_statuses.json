@@ -2,5 +2,6 @@
     "User": true,
     "Authentication": true,
     "Authorization": true,
-    "Product": true
+    "Product": true,
+    "Seller": true
 }
