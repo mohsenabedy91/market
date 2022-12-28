@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Lang;
 use Modules\Authentication\Http\Requests\V1\LoginRequest;
 use Modules\Authentication\Http\Requests\V1\RegisterRequest;
-use Modules\Authentication\Services\AuthService;
+use Modules\Authentication\Services\V1\AuthService;
 use Modules\Authentication\Transformers\V1\AuthResource;
 use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\Response as ResponseStatus;
@@ -35,7 +35,7 @@ class AuthController extends Controller
             responses: [
                 new OA\Response(
                     response: ResponseStatus::HTTP_OK,
-                    description: "ok",
+                    description: "OK",
                     content: new OA\JsonContent(
                         type: AuthResource::class
                     ),
@@ -68,7 +68,7 @@ class AuthController extends Controller
             responses: [
                 new OA\Response(
                     response: ResponseStatus::HTTP_OK,
-                    description: "ok",
+                    description: "OK",
                     content: new OA\JsonContent(
                         type: AuthResource::class
                     ),
@@ -95,7 +95,7 @@ class AuthController extends Controller
             responses: [
                 new OA\Response(
                     response: ResponseStatus::HTTP_OK,
-                    description: "ok",
+                    description: "OK",
                     content: new OA\JsonContent(
                         properties: [
                             new OA\Property(

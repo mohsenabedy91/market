@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-use Modules\Authorization\Services\Permissions\Traits\HasPermissions;
-use Modules\Authorization\Services\Roles\Traits\HasRoles;
+use Modules\Authorization\Services\V1\Permissions\Traits\HasPermissions;
+use Modules\Authorization\Services\V1\Roles\Traits\HasRoles;
 
+/**
+ * @property string $email
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
