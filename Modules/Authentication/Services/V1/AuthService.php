@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Authentication\Services;
+namespace Modules\Authentication\Services\V1;
 
 use Exception;
 use Illuminate\Support\Facades\Auth;

@@ -46,6 +46,7 @@ class AuthorizationServiceProvider extends ServiceProvider
     {
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(PermissionServiceProvider::class);
+        $this->app->register(RepositoryServiceProvider::class);
     }
 
     /**
@@ -89,9 +90,21 @@ class AuthorizationServiceProvider extends ServiceProvider
         Role::resolveRelationUsing("user", static function (Role $role) {
             return $role->belongsTo(User::class, "user_id", "id");
         });
+        Role::resolveRelationUsing("created_by", static function (Role $role) {
+            return $role->belongsTo(User::class, "created_by", "id");
+        });
+        Role::resolveRelationUsing("updated_by", static function (Role $role) {
+            return $role->belongsTo(User::class, "updated_by", "id");
+        });
 
         Permission::resolveRelationUsing("user", static function (Permission $permission) {
             return $permission->belongsTo(User::class, "user_id", "id");
+        });
+        Permission::resolveRelationUsing("created_by", static function (Permission $permission) {
+            return $permission->belongsTo(User::class, "created_by", "id");
+        });
+        Permission::resolveRelationUsing("updated_by", static function (Permission $permission) {
+            return $permission->belongsTo(User::class, "updated_by", "id");
         });
     }
 }

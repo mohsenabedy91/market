@@ -25,7 +25,7 @@ $FIELDS_UP$
      */
     public function down(): void
     {
-        Schema::table("$TABLE$", function (Blueprint $table) {
+        Schema::table("$TABLE$", static function (Blueprint $table) {
 $FIELDS_DOWN$
         });
     }
