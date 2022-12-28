@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Authorization\Services\Permissions\Traits;
+namespace Modules\Authorization\Services\V1\Permissions\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
