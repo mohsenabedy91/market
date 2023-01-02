@@ -143,7 +143,7 @@ class RoleController extends Controller
     ]
     public function show(int $id, RoleService $roleService): RoleResource
     {
-        $role = $roleService->getRoleById($id);
+        $role = $roleService->getById($id);
         return new RoleResource($role);
     }
 
