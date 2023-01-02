@@ -18,7 +18,7 @@ class RoleRepository implements RoleRepositoryInterface
         $role->created_by = $userId;
         $role->save();
 
-        return $this->getRoleById($role->id);
+        return $this->getById($role->id);
     }
 
     /**
@@ -29,19 +29,19 @@ class RoleRepository implements RoleRepositoryInterface
     public function updateRole(array $params, int $roleId): array
     {
         Role::query()->whereId($roleId)->update($params);
-        return $this->getRoleById($roleId);
+        return $this->getById($roleId);
     }
 
     /**
      * @param int $roleId
      * @return array
      */
-    public function getRoleById(int $roleId): array
+    public function getById(int $roleId): array
     {
         return Role::query()
             ->with([
-                "created_by",
-                "updated_by"
+                "created_by:id,first_name,last_name",
+                "updated_by:id,first_name,last_name"
             ])
             ->whereId($roleId)
             ->first()
@@ -57,12 +57,15 @@ class RoleRepository implements RoleRepositoryInterface
         return Role::query()->whereId($roleId)->delete();
     }
 
+    /**
+     * @return array
+     */
     public function getRoles(): array
     {
         return Role::query()
             ->with([
-                "created_by",
-                "updated_by"
+                "created_by:id,first_name,last_name",
+                "updated_by:id,first_name,last_name"
             ])
             ->get()
             ->toArray();

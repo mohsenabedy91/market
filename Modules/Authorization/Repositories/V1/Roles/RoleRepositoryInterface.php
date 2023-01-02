@@ -22,7 +22,7 @@ interface RoleRepositoryInterface
      * @param int $roleId
      * @return array
      */
-    public function getRoleById(int $roleId): array;
+    public function getById(int $roleId): array;
 
     /**
      * @param int $roleId

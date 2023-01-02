@@ -53,12 +53,12 @@ class RoleService
     }
 
     /**
-     * @param int $userId
+     * @param int $roleId
      * @return array
      */
-    public function getRoleById(int $userId): array
+    public function getById(int $roleId): array
     {
-        return $this->roleRepository->getRoleById($userId);
+        return $this->roleRepository->getById($roleId);
     }
 
     /**

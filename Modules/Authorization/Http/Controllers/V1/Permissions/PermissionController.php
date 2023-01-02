@@ -4,7 +4,11 @@ namespace Modules\Authorization\Http\Controllers\V1\Permissions;
 
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Authorization\Http\Requests\V1\Permissions;
+use Illuminate\Support\Facades\Auth;
+use Modules\Authorization\Http\Requests\V1\Permissions\CreatePermissionRequest;
+use Modules\Authorization\Http\Requests\V1\Permissions\UpdatePermissionRequest;
+use Modules\Authorization\Services\V1\Permissions\PermissionService;
+use Modules\Authorization\Transformers\V1\PermissionResource;
 use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\Response as ResponseStatus;
 
@@ -71,9 +75,10 @@ class PermissionController extends Controller
             ],
         )
     ]
-    public function store(Permissions\CreatePermissionRequest $request): Response
+    public function store(CreatePermissionRequest $request, PermissionService $permissionService): PermissionResource
     {
-        //
+        $permission = $permissionService->storePermission($request->validated(), Auth::id());
+        return new PermissionResource($permission);
     }
 
     #[
@@ -159,7 +164,7 @@ class PermissionController extends Controller
             ],
         )
     ]
-    public function update(Permissions\UpdatePermissionRequest $request, int $id): Response
+    public function update(UpdatePermissionRequest $request, int $id): Response
     {
         //
     }

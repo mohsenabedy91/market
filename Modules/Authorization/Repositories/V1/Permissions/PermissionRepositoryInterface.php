@@ -2,11 +2,9 @@
 
 namespace Modules\Authorization\Repositories\V1\Permissions;
 
-interface PermissionRepositoryInterface
+use App\Repositories\BaseRepositoryInterface;
+
+interface PermissionRepositoryInterface extends BaseRepositoryInterface
 {
-    /**
-     * @param $params
-     * @return array
-     */
-    public function storePermission($params): array;
+    //
 }
